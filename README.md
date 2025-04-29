@@ -76,3 +76,7 @@ A simple web application that allows users to register, log in, and view a speci
 ---
 
 ## 🚀 Demo
+
+https://github.com/user-attachments/assets/b30588c9-8175-4319-a351-72889b58ac33
+
+
