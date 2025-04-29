@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend  # This tells Docker to look in the `backend/` directory for the Dockerfile
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"  # Expose Django backend on port 8000
+    environment:
+      - DEBUG=True
+      - DATABASE_URL=sqlite:///db.sqlite3  # SQLite database
+
+  frontend:
+    build:
+      context: ./frontend  # This tells Docker to look in the `frontend/video-viewer/` directory for the Dockerfile
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"  # Expose React frontend (Vite) on port 5173
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=http://backend:8000  # Connect React to backend
